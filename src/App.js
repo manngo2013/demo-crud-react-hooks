@@ -43,12 +43,19 @@ function App() {
     setProducts([...products, product]);
   }
 
+  const removeProduct = (id) => {
+    // Clone current array to the new array
+    let newProducts = [...products];
+    newProducts = newProducts.filter((product) => product.id !== id);
+    setProducts(newProducts);
+  }
+
   return (
     <div className="App">
       <h1>Product Management</h1>
       <AddProductForm addNewProduct={addNewProduct} />
       <br />
-      <ProductList products={products} />
+      <ProductList products={products} removeProduct={removeProduct} />
     </div>
   );
 }

@@ -1,6 +1,10 @@
 import React from "react";
 
-function ProductList({ products }) {
+function ProductList({ products, removeProduct }) {
+  const handleDeleteProduct = (product) => {
+    removeProduct(product.id);
+  };
+
   return (
     <table cellPadding={2} cellSpacing={2} border={1}>
       <thead>
@@ -22,7 +26,14 @@ function ProductList({ products }) {
               <td>{product.price}</td>
               <td>{product.content}</td>
               <td>{product.status}</td>
-              <td></td>
+              <td>
+                <button
+                  type="button"
+                  onClick={() => handleDeleteProduct(product)}
+                >
+                  Delete
+                </button>
+              </td>
             </tr>
           );
         })}
